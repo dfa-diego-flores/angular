@@ -1,0 +1,260 @@
+
+<div class="body">
+    <div class="main_container">
+        <div class="right_col" role="main">
+                        
+            <div class="row">
+                <div class="col-md-12" >    
+             
+                    <div class="login-panel alert {{tipoAlerta}}" role="alert" *ngIf="success"> 
+
+                                <div class="row flex-parent">
+                                    <div class="col-md-3 text-right">
+                                        <i class="{{iconoAlerta}} icon-tama"></i>
+                                    </div>
+                                    <div class="col-md-9 flex-child" >
+                                        <p class="text-left">  {{msj}}</p>
+                                    </div>
+                                </div>
+
+                    </div>
+                      
+            <div class="login-panel panel panel-default"  *ngIf="tienePermisoView">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Registrar Persona</h3>
+                </div>
+                <div class="panel-body" >
+
+                   <!-- <form role="form" onKeypress="if(event.keyCode == 13) event.returnValue = false;"> 
+                       -->   
+                        <fieldset>
+                            <div class="col-md-10">
+                                
+                                <div class="row"> 
+                                    <div class="col-md-6 col-xd-2">
+                                        <div class="form-group">
+                                            <label>Serie Doc: </label>
+                                            <select class="form-control"  required  [(ngModel)]="serieObjeto"  name="txtSerieDocumentos" (ngModelChange)="mostrarSubSerie()"> 
+                                                  <option *ngFor="let serie of serieDocumentos; let i = index"  [ngValue]="serie">{{serie.codigo }}-{{serie.titulo}} </option>
+                                            </select>
+                                            <div class="col-md-12 leyenda-total" *ngIf="textoSerie">  
+                                                <label  class="leyenda col-md-4" >SERIE:</label> 
+                                                <label class="leyenda-texto col-md-8">  {{tituloSerie}} </label>    
+                                            </div>       
+                                       </div>
+                                    </div>
+                                    
+                                                                      
+                                  <div class="col-md-6 col-xd-6">    
+                                    <!--<div class="form-group">
+                                        <label>Sub Serie:</label>
+                                        <input  class="form-control"  placeholder="Sub Serie" type="number" [(ngModel)]="sub_serie" name="txtSubSerie" min="1" max="99999999" >
+                                    </div>-->
+                                     <div class="form-group" *ngIf="tieneSubSerie">   
+                                            <label> Sub Serie</label>
+                                            <select  name="txtsubSeries" class="form-control" [(ngModel)]="subSerieObjeto"  (ngModelChange)="mostrarDatosSubSerie()">
+                                                <option *ngFor=" let subSerie of subSerieDocumentos" [ngValue]="subSerie">{{subSerie.codigo }}-{{subSerie.titulo}}</option>
+                                            </select>
+                                            <div class="col-md-12 leyenda-total" *ngIf="textoSubSerie">  
+                                                <label  class="leyenda col-md-4" >SUB SERIE:</label> 
+                                                <label class="leyenda-texto col-md-8">  {{tituloSubSerie}} </label>    
+                                            </div> 
+                                      </div>
+                                  </div> 
+
+                                 </div>
+                                
+
+                                <div class="form-group">
+                                    <label>Tipo Doc.: </label>
+                                    <select class="form-control"  required  [(ngModel)]="idTipoDocumento"  name="txtTipoDocumento"> 
+                                          <option *ngFor="let tipoDocumento of tipoDocumentos" [value]="tipoDocumento['id_tipo_documento']">{{tipoDocumento['ntipo_documento']}} </option>
+                                    </select>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 col-xd-6">
+                                        <div class="form-group">
+                                         <label>Nro Documento(Texto):</label>
+                                         <div class="row">
+                                             <div class="col-md-12 col-xs-6">
+                                                 <input class="form-control" required placeholder="Nro Documento" type="text" [(ngModel)]="nro_documentoTexto" name="txtNroDocumento" />
+                                             </div >
+                                            
+                                         </div>
+                                        </div>
+                                    </div>  
+                                    <div class="col-md-3 col-xd-6">
+                                        <div class="form-group">
+                                            <label>Nro documento(Numero):</label>
+                                            <input  class="form-control" required  placeholder="Nro Doc" type="number" [(ngModel)]="nro_documento"  name="txtNroDoc" min="1" max="99999999" >
+                                        </div>   
+                                    </div>
+                                    <div class="col-md-3 col-xd-6">
+                                        <div class="form-group">
+                                            <label>Nro Folio:</label>
+                                            <input  class="form-control"  required  placeholder="Nro Folio" type="number" [(ngModel)]="nro_folio" name="txtNroFolio" min="1" max="99999999" >
+                                        </div>
+                                    </div>  
+                                </div>
+                            
+
+                                        
+                              <div class="row">       
+                                  <!--<div class="col-md-3 col-xd-6">
+                                    <div class="form-group">
+                                        <label>Nro Caja:</label>
+                                        <input  class="form-control" required  placeholder="Nro Caja" type="number" [(ngModel)]="nro_caja" name="txtNroCaja" min="1" max="99999999" >
+                                    </div>  
+                                  </div>
+                                 <div class="col-md-3 col-xd-6">
+                                    <div class="form-group">
+                                        <label>Nro Paquete:</label>
+                                        <input  class="form-control" required  placeholder="Nro Paquete" type="number" [(ngModel)]="nro_paquete" name="txtNroPaquete" min="1" max="99999999" >
+                                    </div>   
+                                  </div>   --> 
+                                  
+
+                                    <!--
+                                  <div class="col-md-3 col-xd-6">
+                                        <div class="form-group">
+                                            <label>Cod Contri:</label>
+                                            <input class="form-control"   placeholder="Cod. Contri." type="number" [(ngModel)]="cod_contri" name="txtCodContri" min="1" max="99999999" >
+                                        </div>
+                                   </div> -->
+                             </div>
+                                                 
+                                 
+                               <div class="col-xs-12 p-t-5">
+                                        <input type="checkbox" name="rememberme" id="rememberme" class="filled-in chk-col-pink" (click)="activarRegistrado()">
+                                        <label for="rememberme">Persona No Registrada</label>
+                               </div>
+                               <div class="row"    *ngIf="noRegistrado" >
+                                  <div class="col-md-6 col-xd-6">
+                                    <div class="form-group">
+                                        <label>Nombres:</label>
+                                        <input  class="form-control" required  placeholder="Nombres" type="text" [(ngModel)]="nombreAux" name="txtNombreAux" >
+                                    </div>  
+                                  </div>
+                                
+                                  <div class="col-md-6 col-xd-6">
+                                    <div class="form-group">
+                                        <label>Apellido Paterno:</label>
+                                        <input  class="form-control"   placeholder="Apellido Paterno" type="text"  [(ngModel)]="apellidoPaternoAux" name="txtApellidoPaternoAux" >
+                                    </div>  
+                                  </div>
+                                
+                                  <div class="col-md-6 col-xd-6">
+                                    <div class="form-group">
+                                        <label>Apellido Materno:</label>
+                                        <input  class="form-control" placeholder="Apellido Materno" type="text"   [(ngModel)]="apellidoMaternoAux"  name="txtApellidoMaternoAux" >
+                                    </div>  
+                                  </div>
+                                
+                                  <div class="col-md-6 col-xd-6">
+                                    <div class="form-group">
+                                        <label>DNI / RUC / DOC:</label>
+                                        <input  class="form-control"  placeholder="Nro Caja" type="number"  name="txtNroCaja"  [(ngModel)]="dniAux"  name="txtDniAux" >
+                                    </div>  
+                                  </div>
+                            </div>
+ 
+                             <div class="row">       
+                                
+                                 <div class="col-md-9 col-xd-6" *ngIf="!noRegistrado">           
+                                        <div class="form-group">
+                                            <label>Apellidos y Nombres:</label>
+                                            <!--<input class="form-control" name="txtEmpleadoSelecionado" required [(ngModel)]="personaSattSelected"  (keypress)="tecla($event)"  (ngModelChange)="autocompletar('<=View.URL(View.DOCUMENTO_ACTION_OBTENERPERSONALIKE)%>',$event)" placeholder="Buscar Empleado" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();" />-->
+                                            
+                                            <input class="form-control" name="txtEmpleadoSelecionado" required [(ngModel)]="personaSattSelected"  (keypress)="tecla($event)"  (keyup)="teclaArriba($event)"  placeholder="Buscar Persona"  />                 
+                                            <!--<input class="form-control" name="txtEmpleadoSelecionado" required [(ngModel)]="personaSattSelected"  (keypress)="tecla($event)"   placeholder="Buscar Persona" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();" /> -->                                  
+                                                   
+                                            <ul class="lista-diego" *ngIf="listaEncontrada" >
+                                                <li *ngFor="let usuario of listaPersonasNombres"  >
+                                                    <a (click)="elegirPersona(usuario)">
+                                                         {{ usuario.nombres }}
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        
+                                            <label> {{msjPersonaEncontrada}}</label>
+                                            <!--<input class="form-control" required  placeholder="Apellidos" type="text" >-->
+                                        </div>
+                                  </div>
+                                 
+                                  <div class="col-md-3 col-xd-6">  
+                                        <div class="form-group">
+                                            <label>Fecha Documento:</label>
+                                            <input class="form-control" required  placeholder="Fecha Doc." type="date"  [(ngModel)]="fecha_doc" name="txtFechaDoc" >
+                                        </div>
+                                      
+                                   </div>
+                            </div>
+                                        
+                             <div class="row">  
+                                 <div class="col-md-12 col-xd-12">  
+                                    <div class="form-group">
+                                        <label>Descripcion:</label>
+                                        <textarea  rows="5"  required  class="form-control" placeholder="Descripcion" type="text" [(ngModel)]="descripcion" name="txtDescripcion" ></textarea>
+                                    </div>
+                                 </div>
+                             </div>          
+
+                             <div class="row"> 
+                                 <div class="col-md-12 col-xd-12">  
+                                    <div class="form-group">
+                                        <label>Observacion:</label>
+                                        <textarea rows="5" class="form-control" placeholder="Observacion" type="text" [(ngModel)]="observacion" name="txtObservacion" ></textarea>
+                                    </div>
+                                  </div>
+                              </div>
+                                        
+                    
+                                  <!--      
+                                <div class="row">          
+                                    <fieldset >
+                                      <div class="form-group">    
+                                            <label> Oficina o Area</label>     
+                                            <select  name="txtUnidades"  class="form-control" [(ngModel)]="selectedItem" (ngModelChange)="mostrarEmpleados('<=View.URL(View.DOCUMENTO_ACTION_OBTENEREMPLEADO)%>')">
+                                                <option *ngFor=" let item of listaUnidades" [ngValue]="item.cUnidadEntidad" >{{item.nombres }}</option>
+                                            </select>
+                                      </div>
+
+                                      <div class="form-group">   
+                                            <label> Empleado</label>
+                                            <select  name="txtEmpleados" class="form-control" [(ngModel)]="selectedItemEmpleado" >
+                                                <option *ngFor=" let itemEmpleado of listaEmpleados" [ngValue]="itemEmpleado.cempleado">{{itemEmpleado.nombres }}</option>
+                                            </select>
+                                      </div>
+                                   </fieldset>
+                                 </div>   
+                                                -->
+
+                                                
+                                                
+                            </div>     
+
+                                       
+                            <div class="col-md-2">
+                                <button  (click)="registrar()"  class="btn btn-primary btn-block"><i class="fa fa-plus fa-fw ic-dfa"></i>Registrar</button>
+                                <!--<button  (click)="buscar('<=View.URL(View.DOCUMENTO_ACTION_SELECCIONAR)%>')" class="btn btn-primary btn-block"><i class="fa fa-search fa-fw ic-dfa"></i>Buscar</button>
+                                <button  (click)="actualizar('<=View.URL(View.DOCUMENTO_ACTION_MODIFICAR)%>')" class="btn btn-primary btn-block"><i class="fa fa-edit fa-fw ic-dfa"></i>Modificar</button>
+                                <button  (click)="eliminar('<=View.URL(View.DOCUMENTO_ACTION_ELIMINAR)%>')" class="btn btn-primary btn-block"><i class="fa fa-trash fa-fw ic-dfa"></i>Eliminar</button>
+                                -->
+                                <button  (click)="limpiar()" class="btn btn-primary btn-block"><i class="fa fa-eraser fa-fw ic-dfa"></i>Limpiar</button>
+                            
+                            </div>
+                        </fieldset>
+                  <!--  </form>-->
+                </div>
+            </div>
+     
+
+                </div>
+            </div>
+            
+        </div>      
+    </div>
+</div>
+
+

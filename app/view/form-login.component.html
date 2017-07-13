@@ -1,0 +1,74 @@
+
+
+<div class="login-page">
+       
+    <div class="login-panel alert {{tipoAlerta}}" role="alert" *ngIf="success"> 
+
+                        <div class="row flex-parent">
+                            <div class="col-md-3 text-right">
+                                <!-- <i class="{{iconoAlerta}} fa fa-fw ic-dfa"></i>-->
+                                 <i class="{{iconoAlerta}} icon-tama"></i>
+                            </div>
+                            <div class="col-md-9 flex-child" >
+
+                                <p class="text-left">  {{msj}}</p>
+                            </div>
+                        </div>
+
+    </div>
+    
+    <div class="login-box">
+        <div class="logo">
+            <a href="javascript:void(0);"><b>Cultura Millonaria</b></a>
+            <small>Admin - Login </small>
+        </div>
+        <div class="card">
+            <div class="body">
+               <form [formGroup]="loginForm" >
+                    <div class="msg">Sign in to start your session</div>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                        </span>
+                        <div class="form-line">
+                            <input  formControlName="Usuario"  type="text" class="form-control" name="txtUsuario" placeholder="Usuario" required autofocus>
+                            <div *ngIf="formErrors.Usuario" class="alert alert-warning">
+                                    {{ formErrors.Usuario }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-lock" aria-hidden="true"></i>
+                        </span>
+                        <div class="form-line">
+                            <input formControlName="Clave" type="password" class="form-control" name="txtClave" placeholder="Password" required>
+                            <div *ngIf="formErrors.Clave" class="alert alert-warning">
+                                    {{ formErrors.Clave }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-8 p-t-5">
+                            <input type="checkbox" name="rememberme" id="rememberme" class="filled-in chk-col-pink">
+                            <label for="rememberme">Remember Me</label>
+                        </div>
+                        <div class="col-xs-4">
+                            <button [disabled]="!loginForm.valid" (click)="ingresar()"  class="btn btn-block bg-pink waves-effect" type="submit">SIGN IN</button>
+                        </div>
+                    </div>
+                    <div class="row m-t-15 m-b--20">
+                        <div class="col-xs-6">
+                            <a href="sign-up.html">Register Now!</a>
+                        </div>
+                        <div class="col-xs-6 align-right">
+                            <a href="forgot-password.html">Forgot Password?</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+
