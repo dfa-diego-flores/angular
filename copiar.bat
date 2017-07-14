@@ -1,0 +1,1 @@
+copy dist\*.* c:\xampp\htdocs\dist\
